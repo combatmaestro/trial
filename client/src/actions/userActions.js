@@ -21,17 +21,10 @@ import {
   EDIT_USER_SUCCESS,
   EDIT_USER_FAILURE,
 } from '../constants/userConstants'
-import Cookies from 'universal-cookie';
 import axios from 'axios'
-// axios.defaults.withCredentials = true;
+
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "https://academy-beryl.vercel.app"
-// const cookies = new Cookies();
-// axios.interceptors.request.use(
-//   config =>{
-//     config.headers.authorization = `Bearer ${cookies.get('cybervie')}`;
-//   }
-// )
 const userGoogleLoginRequest = () => {
   return {
     type: USER_SIGNIN_REQUEST,
@@ -54,6 +47,8 @@ const userGoogleLoginFailure = (error) => {
 
 export const userGoogleLogin = (info) => async (dispatch) => {
   dispatch(userGoogleLoginRequest())
+
+  
   try {
    
     const { data } = await axios({
@@ -63,10 +58,8 @@ export const userGoogleLogin = (info) => async (dispatch) => {
         token: info.credential,
       },
     })
-
-    // const cookies = new Cookies();
-    // cookies.set('cybervie', data.token, { path: '/',SameSite:"None" });
-
+    const cookies = new Cookies();
+    cookies.set('cybervie', data.token, { path: '/' });
     dispatch(userGoogleLoginSuccess(data))
   } catch (error) {
     dispatch(
