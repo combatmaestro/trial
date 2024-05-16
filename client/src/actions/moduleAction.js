@@ -13,9 +13,11 @@ import {
   ADD_MODULE_SUCCESS,
   ADD_MODULE_FAILURE,
 } from "../constants/moduleConstants";
+import Cookies from 'universal-cookie';
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "https://academy-beryl.vercel.app"
 axios.defaults.withCredentials = true;
+const cookies = new Cookies();
 export const getAllModules = () => async (dispatch) => {
   dispatch({
     type: GET_MODULE_REQUEST,
@@ -25,6 +27,9 @@ export const getAllModules = () => async (dispatch) => {
     const { data } = await axios({
       method: "GET",
       url: `${backendUrl}/module/getall`,
+      headers: {
+        'Cookie': `cybervie=${Cookies.get('cybervie')}`,
+      },
     });
     dispatch({
       type: GET_MODULE_SUCCESS,
