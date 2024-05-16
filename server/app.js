@@ -12,7 +12,7 @@ const cors = require("cors");
 app.use(cors({ 
   origin: "https://student-iota-livid.vercel.app", 
   credentials: true ,
-  SamesSite:"None"
+  SameSite:"None"
  }));
  
  
