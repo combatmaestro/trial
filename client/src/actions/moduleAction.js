@@ -27,9 +27,6 @@ export const getAllModules = () => async (dispatch) => {
     const { data } = await axios({
       method: "GET",
       url: `${backendUrl}/module/getall`,
-      headers: {
-        'Cookie': `cybervie=${Cookies.get('cybervie')}`,
-      },
     });
     dispatch({
       type: GET_MODULE_SUCCESS,
