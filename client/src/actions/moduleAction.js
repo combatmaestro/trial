@@ -17,6 +17,7 @@ import Cookies from 'universal-cookie';
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "https://academy-beryl.vercel.app"
 axios.defaults.withCredentials = true;
+axios.defaults.crossDomain= true;
 const cookies = new Cookies();
 export const getAllModules = () => async (dispatch) => {
   dispatch({
