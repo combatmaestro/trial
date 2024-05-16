@@ -54,8 +54,6 @@ const userGoogleLoginFailure = (error) => {
 
 export const userGoogleLogin = (info) => async (dispatch) => {
   dispatch(userGoogleLoginRequest())
-
-  
   try {
    
     const { data } = await axios({
