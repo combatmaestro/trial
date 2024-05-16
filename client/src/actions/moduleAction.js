@@ -25,6 +25,7 @@ export const getAllModules = () => async (dispatch) => {
     const { data } = await axios({
       method: "GET",
       url: `${backendUrl}/module/getall`,
+      withCredentials: true
     });
     dispatch({
       type: GET_MODULE_SUCCESS,
