@@ -27,11 +27,11 @@ axios.defaults.withCredentials = true;
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "https://academy-beryl.vercel.app"
 const cookies = new Cookies();
-axios.interceptors.request.use(
-  config =>{
-    config.headers.authorization = `Bearer ${cookies.get('cybervie')}`;
-  }
-)
+// axios.interceptors.request.use(
+//   config =>{
+//     config.headers.authorization = `Bearer ${cookies.get('cybervie')}`;
+//   }
+// )
 const userGoogleLoginRequest = () => {
   return {
     type: USER_SIGNIN_REQUEST,
