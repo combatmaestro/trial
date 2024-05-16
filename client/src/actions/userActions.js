@@ -59,6 +59,7 @@ export const userGoogleLogin = (info) => async (dispatch) => {
         token: info.credential,
       },
     })
+    
     const cookies = new Cookies();
     cookies.set('cybervie', data.token, { path: 'https://academy-beryl.vercel.app' });
     dispatch(userGoogleLoginSuccess(data))
