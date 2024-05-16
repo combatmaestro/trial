@@ -25,7 +25,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios'
 
 // const backendUrl = "https://cybervie-server.vercel.app";
-const backendUrl = "https://cybervie-server.vercel.app"
+const backendUrl = "https://academy-beryl.vercel.app"
 const userGoogleLoginRequest = () => {
   return {
     type: USER_SIGNIN_REQUEST,

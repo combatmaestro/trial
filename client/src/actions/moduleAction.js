@@ -14,7 +14,7 @@ import {
   ADD_MODULE_FAILURE,
 } from "../constants/moduleConstants";
 // const backendUrl = "https://cybervie-server.vercel.app";
-const backendUrl = "https://cybervie-server.vercel.app"
+const backendUrl = "https://academy-beryl.vercel.app"
 axios.defaults.withCredentials = true;
 export const getAllModules = () => async (dispatch) => {
   dispatch({
