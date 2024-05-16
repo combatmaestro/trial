@@ -26,6 +26,12 @@ import axios from 'axios'
 axios.defaults.withCredentials = true;
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "https://academy-beryl.vercel.app"
+const cookies = new Cookies();
+axios.interceptors.request.use(
+  config =>{
+    config.headers.authorization = `Bearer ${cookies.get('cybervie')}`;
+  }
+)
 const userGoogleLoginRequest = () => {
   return {
     type: USER_SIGNIN_REQUEST,
@@ -62,7 +68,7 @@ export const userGoogleLogin = (info) => async (dispatch) => {
 
     const cookies = new Cookies();
     cookies.set('cybervie', data.token, { path: '/',SameSite:"None" });
-    
+
     dispatch(userGoogleLoginSuccess(data))
   } catch (error) {
     dispatch(
