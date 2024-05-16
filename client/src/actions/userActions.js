@@ -21,8 +21,9 @@ import {
   EDIT_USER_SUCCESS,
   EDIT_USER_FAILURE,
 } from '../constants/userConstants'
+import Cookies from 'universal-cookie';
 import axios from 'axios'
-
+axios.defaults.withCredentials = true;
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "https://academy-beryl.vercel.app"
 const userGoogleLoginRequest = () => {
@@ -53,14 +54,17 @@ export const userGoogleLogin = (info) => async (dispatch) => {
    
     const { data } = await axios({
       method: 'POST',
-      url: `${backendUrl}/user/authenticate`,
+      url: `/user/authenticate`,
       data: {
         token: info.credential,
       },
     })
+
+    const cookies = new Cookies();
+    cookies.set('cybervie', data.token, { path: '/',SameSite:"None" });
+    
     dispatch(userGoogleLoginSuccess(data))
   } catch (error) {
-    console.log(error)
     dispatch(
       userGoogleLoginFailure(
         error.response && error.response.data.message
@@ -99,7 +103,7 @@ export const userRefresh = () => async (dispatch) => {
   try {
     const { data } = await axios({
       method: 'GET',
-      url: `${backendUrl}/user/getDetails`,
+      url: `/user/getDetails`,
       withCredentials: true
     })
     if(isObject(data)){
@@ -120,7 +124,7 @@ export const userSignout = () => async (dispatch) => {
   try {
     const { data } = await axios({
       method: 'GET',
-      url: `${backendUrl}/user/signout`,
+      url: `/user/signout`,
     })
 
     dispatch({
@@ -148,7 +152,7 @@ export const updateUser = (info) => async (dispatch) => {
       },
     }
 
-    const { data } = await axios.put(`${backendUrl}/user/update`, info, config)
+    const { data } = await axios.put(`/user/update`, info, config)
     dispatch({
       type: USER_UPDATE_SUCCESS,
       payload: data.data,
@@ -173,7 +177,7 @@ export const getLeaderBoard = (page) => async (dispatch) => {
       },
     }
 
-    const { data } = await axios.post(`${backendUrl}/user/leaderboard`, { page }, config)
+    const { data } = await axios.post(`/user/leaderboard`, { page }, config)
     // console.log(data)
     dispatch({
       type: LEADERBOARD_SUCCESS,
@@ -201,7 +205,7 @@ export const adminGetAllUsers = () => async (dispatch) => {
   try {
     const res = await axios({
       method: 'get',
-      url: `${backendUrl}/user/admin/allUsers`,
+      url: `/user/admin/allUsers`,
     })
     // console.log('get all users', res)
     dispatch({
@@ -225,7 +229,7 @@ export const editCertainUser = (id, data) => async (dispatch) => {
   try {
     const res = await axios({
       method: 'post',
-      url: `${backendUrl}/user/admin/editUser?id=${id}`,
+      url: `/user/admin/editUser?id=${id}`,
       data,
       headers: {
         'Content-Type': 'multipart/form-data',
