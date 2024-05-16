@@ -58,10 +58,9 @@ export const userGoogleLogin = (info) => async (dispatch) => {
         token: info.credential,
       },
     })
-    const cookies = new Cookies();
-    cookies.set('cybervie', data.token, { path: '/' });
     dispatch(userGoogleLoginSuccess(data))
   } catch (error) {
+    console.log(error)
     dispatch(
       userGoogleLoginFailure(
         error.response && error.response.data.message
