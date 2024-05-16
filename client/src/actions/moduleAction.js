@@ -30,6 +30,7 @@ export const getAllModules = () => async (dispatch) => {
       url: `${backendUrl}/module/getall`,
       crossDomain:true
     });
+    
     dispatch({
       type: GET_MODULE_SUCCESS,
       payload: data.data,
