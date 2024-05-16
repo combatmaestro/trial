@@ -4,7 +4,7 @@ import {
   ADMIN_GET_ORDER_SUCCESS,
   ADMIN_GET_ORDER_FAILURE,
 } from "../constants/orderConstants";
-
+axios.defaults.withCredentials = true;
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "http://127.0.1.1:4000"
 export const getAllOrders = (id) => async (dispatch) => {

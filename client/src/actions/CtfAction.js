@@ -10,6 +10,7 @@ import {
   EDIT_CTF_REQUEST,
   EDIT_CTF_SUCCESS,
 } from '../constants/CtfConstants'
+axios.defaults.withCredentials = true;
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "http://127.0.1.1:4000"
 export const getAdminCtf = (id) => async (dispatch) => {

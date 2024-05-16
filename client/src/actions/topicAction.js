@@ -17,7 +17,7 @@ import {
 } from '../constants/topicConstants'
 
 import axios from 'axios'
-
+axios.defaults.withCredentials = true;
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "http://127.0.1.1:4000"
 export const getAdminTopic = (id) => async (dispatch) => {

@@ -23,7 +23,7 @@ import {
 } from '../constants/userConstants'
 import Cookies from 'universal-cookie';
 import axios from 'axios'
-
+axios.defaults.withCredentials = true;
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "https://academy-beryl.vercel.app"
 const userGoogleLoginRequest = () => {
