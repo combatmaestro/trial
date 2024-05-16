@@ -54,7 +54,7 @@ export const userGoogleLogin = (info) => async (dispatch) => {
    
     const { data } = await axios({
       method: 'POST',
-      url: `/user/authenticate`,
+      url: `${backendUrl}/user/authenticate`,
       data: {
         token: info.credential,
       },
