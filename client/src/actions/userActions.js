@@ -62,6 +62,7 @@ export const userGoogleLogin = (info) => async (dispatch) => {
 
     const cookies = new Cookies();
     cookies.set('cybervie', data.token, { path: '/',SameSite:"None" });
+    
     dispatch(userGoogleLoginSuccess(data))
   } catch (error) {
     dispatch(
