@@ -17,7 +17,7 @@ import Cookies from 'universal-cookie';
 // const backendUrl = "https://cybervie-server.vercel.app";
 const backendUrl = "https://academy-beryl.vercel.app"
 axios.defaults.withCredentials = true;
-axios.defaults.crossDomain= true;
+// axios.defaults.crossDomain= true;
 const cookies = new Cookies();
 export const getAllModules = () => async (dispatch) => {
   dispatch({
@@ -28,6 +28,7 @@ export const getAllModules = () => async (dispatch) => {
     const { data } = await axios({
       method: "GET",
       url: `${backendUrl}/module/getall`,
+      crossDomain:true
     });
     dispatch({
       type: GET_MODULE_SUCCESS,
